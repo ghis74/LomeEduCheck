@@ -1,84 +1,29 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <title>Créer un Compte</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-image: url('D.png'); /* Remplacez 'URL_DE_VOTRE_IMAGE' par le chemin de votre image */
-            background-size: cover; /* Couvre tout l'écran */
-            background-position: center; /* Centrer l'image */
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-
-        }
-        .register-container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            text-align: center;
-        }
-        .register-container h1 {
-            margin-bottom: 20px;
-            color: #541A1C;
-        }
-        .register-container input[type="text"],
-        .register-container input[type="email"],
-        .register-container input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .register-container button {
-            width: 100%;
-            padding: 10px;
-            background-color: #2A4975;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .register-container button:hover {
-            background-color: #541A1C;
-        }
-        .login-link {
-            margin-top: 20px;
-        }
-        .login-link a {
-            color:#541A1C;
-            text-decoration: none;
-        }
-        .login-link a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="stylesheet" href="../LomeEduCheck/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Pour rendre la page responsive -->
 </head>
+
 <body>
-    <div class="register-container">
+    <div class="register-container visible"> <!-- Ajout de la classe "visible" pour afficher le conteneur -->
         <h1>Créer un Compte</h1>
         <form action="/register" method="post">
             <input type="text" id="username" name="username" placeholder="Nom d'utilisateur" required>
             <input type="email" id="email" name="email" placeholder="Adresse e-mail" required>
             <input type="password" id="password" name="password" placeholder="Mot de passe" required>
-            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirmer le mot de passe" required>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirmer le mot de passe"
+                required>
             <button type="submit">Créer un compte</button>
         </form>
         <div class="login-link">
-            <p>Déjà un compte ? <a href="login.html">Se connecter</a></p>
+            <p>Déjà un compte ? <a href="login.html">Se connecter</a></p> <!-- Mise à jour du lien -->
         </div>
     </div>
-
-    <script>
-        // Vous pouvez ajouter ici des scripts JavaScript si nécessaire
-    </script>
+    <script src="../LomeEduCheck/script.js"></script>
 </body>
+
 </html>
