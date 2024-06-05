@@ -37,6 +37,7 @@ body::before {
 /* Définition des styles pour le conteneur d'inscription */
 .register-container {
     background-color: rgba(247, 247, 247, 0.95);
+    /* Ajout de transparence pour voir l'effet de fond */
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -136,100 +137,99 @@ button[type="submit"] {
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-/* Définition des styles pour le bouton de soumission lorsqu'il est survolé */
-button[type="submit"]:hover {
-    background-color: #541A1C;
-}
-
-/* Définition des styles pour le lien de connexion */
-.login-link {
-    margin-top: 20px;
-    font-size: 16px;
-    color: #333;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-}
-
-/* Définition des styles pour le lien de connexion lorsqu'il est visible */
-.register-container.visible .login-link {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Définition des styles pour l'ancre du lien de connexion */
-.login-link a {
-    color: #541A1C;
-    text-decoration: none;
-}
-
-.login-link a:hover {
-    text-decoration: underline;
-}
-
-/* Media Queries pour la responsivité */
-@media (max-width: 768px) {
-    .register-container {
-        width: 80%;
-        padding: 20px;
+    font-weight: bold;transition: background-color 0.3s ease;
     }
-
-    .register-container h1 {
-        font-size: 20px;
+    
+    /* Définition des styles pour le bouton de soumission lorsqu'il est survolé */
+    button[type="submit"]:hover {
+        background-color: #541A1C;
     }
-
-    label {
-        font-size: 14px;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="password"] {
-        padding: 12px;
-        font-size: 14px;
-    }
-
-    button[type="submit"] {
-        padding: 12px;
-        font-size: 14px;
-    }
-
+    
+    /* Définition des styles pour le lien de connexion */
     .login-link {
-        font-size: 14px;
+        margin-top: 20px;
+        font-size: 16px;
+        color: #333;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
     }
-}
-
-@media (max-width: 480px) {
-    .register-container {
-        width: 90%;
-        padding: 15px;
+    
+    /* Définition des styles pour le lien de connexion lorsqu'il est visible */
+    .register-container.visible .login-link {
+        opacity: 1;
+        transform: translateY(0);
     }
-
-    .register-container h1 {
-        font-size: 18px;
+    
+    /* Définition des styles pour l'ancre du lien de connexion */
+    .login-link a {
+        color: #541A1C;
+        text-decoration: none;
     }
-
-    label {
-        font-size: 12px;
+    
+    .login-link a:hover {
+        text-decoration: underline;
     }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="password"] {
-        padding: 10px;
-        font-size: 12px;
+    
+    /* Media Queries pour la responsivité */
+    @media (max-width: 768px) {
+        .register-container {
+            width: 80%;
+            padding: 20px;
+        }
+    
+        .register-container h1 {
+            font-size: 20px;
+        }
+    
+        label {
+            font-size: 14px;
+        }
+    
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            padding: 12px;
+            font-size: 14px;
+        }
+    
+        button[type="submit"] {
+            padding: 12px;
+            font-size: 14px;
+        }
+    
+        .login-link {
+            font-size: 14px;
+        }
     }
-
-    button[type="submit"] {
-        padding: 10px;
-        font-size: 12px;
+    
+    @media (max-width: 480px) {
+        .register-container {
+            width: 90%;
+            padding: 15px;
+        }
+    
+        .register-container h1 {
+            font-size: 18px;
+        }
+    
+        label {
+            font-size: 12px;
+        }
+    
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            padding: 10px;
+            font-size: 12px;
+        }
+    
+        button[type="submit"] {
+            padding: 10px;
+            font-size: 12px;
+        }
+    
+        .login-link {
+            font-size: 12px;
+        }
     }
-
-    .login-link {
-        font-size: 12px;
-    }
-}
