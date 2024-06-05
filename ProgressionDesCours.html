@@ -30,14 +30,14 @@
             justify-content: center;
             width: 90%;
             max-width: 1200px;
-            margin: 80px auto;
+            margin: 20px auto;
             padding: 20px;
             background-color: white;
-            border-radius:8px;
+            border-radius: 8px;
             box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
         }
         .course {
-            flex: 1 1 calc(33.333% - 20px); /* Each course takes up 1/3 of the container width */
+            flex: 1 1 calc(33.333% - 20px); /* Chaque cours occupe 1/3 de la largeur du conteneur */
             margin: 10px;
             padding: 20px;
             background-color: #fff;
@@ -66,24 +66,32 @@
             border-radius: 8px 0 0 8px;
             transition: width 0.5s ease-in-out;
         }
+        .select-container {
+            margin: 20px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <div class="navbar">
         <h1>Progression des Cours</h1>
     </div>
-    <h1>Choix de niveau</h1>
-    <label for="niveau">Niveaux:</label>
-            <select id="niveau" name="niveau" class="form-control">
-                <option value="all">Tous les niveaux</option>
-                <option value="B3SI">B3SI</option>
-                <option value="B3M">B3M</option>
-                <option value="M1M">M1M</option>
-                <option value="M1SI">M1SI</option>
-                <option value="B1SI">B1SI</option>
-                <option value="B2SI">B2SI</option>
-                <!-- Ajoutez d'autres options pour vos catégories -->
-            </select>
+
+    <div class="select-container">
+        <h2>Choix de niveau</h2>
+        <label for="niveau">Niveaux:</label>
+        <select id="niveau" name="niveau" class="form-control">
+            <option value="all">Tous les niveaux</option>
+            <option value="B3SI">B3SI</option>
+            <option value="B3M">B3M</option>
+            <option value="M1M">M1M</option>
+            <option value="M1SI">M1SI</option>
+            <option value="B1SI">B1SI</option>
+            <option value="B2SI">B2SI</option>
+            <option value="B2M">B2M</option>
+            <option value="B1M">B1M</option>
+        </select>
+    </div>
 
     <div class="content" id="courseProgressContainer">
         <!-- Les cours et leur progression seront affichés ici -->
@@ -91,35 +99,115 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Données statiques pour les cours
+            // Données statiques pour les cours avec au moins 7 cours par niveau
             const courses = [
-                { name: 'RESEAU LOCAL', progress: 75 },
-                { name: 'UML', progress: 60 },
-                { name: 'SQL SERVER', progress: 45 },
-                { name: 'MERISE', progress: 90 },
-                { name: 'PROJET SI', progress: 50 },
-                { name: 'MS PROJECT', progress: 75 },
-                { name: 'VISUAL BASIC', progress: 60 },
-                { name: 'APPLICATION WEB & MOBILE', progress: 45 },
-                { name: 'RESEAUX TELECOMS', progress: 90 },
-                { name: 'BUSINESS PLAN', progress: 50 }
-                
+                // Cours pour B3SI
+                { name: 'RESEAU LOCAL', progress: 75, niveau: 'B3SI' },
+                { name: 'UML', progress: 60, niveau: 'B3SI' },
+                { name: 'SQL SERVER', progress: 45, niveau: 'B3SI' },
+                { name: 'MERISE', progress: 90, niveau: 'B3SI' },
+                { name: 'PROJET SI', progress: 50, niveau: 'B3SI' },
+                { name: 'INTRODUCTION À L\'INFORMATIQUE', progress: 85, niveau: 'B3SI' },
+                { name: 'SYSTEMES D\'EXPLOITATION', progress: 70, niveau: 'B3SI' },
+
+                // Cours pour B3M
+                { name: 'MS PROJECT', progress: 75, niveau: 'B3M' },
+                { name: 'VISUAL BASIC', progress: 60, niveau: 'B3M' },
+                { name: 'APPLICATION WEB & MOBILE', progress: 45, niveau: 'B3M' },
+                { name: 'GESTION DE BASES DE DONNÉES', progress: 80, niveau: 'B3M' },
+                { name: 'ALGORITHMIQUE', progress: 50, niveau: 'B3M' },
+                { name: 'INTRODUCTION AUX RÉSEAUX', progress: 65, niveau: 'B3M' },
+                { name: 'DÉVELOPPEMENT WEB', progress: 90, niveau: 'B3M' },
+
+                // Cours pour M1M
+                { name: 'RESEAUX TELECOMS', progress: 90, niveau: 'M1M' },
+                { name: 'BUSINESS PLAN', progress: 50, niveau: 'M1M' },
+                { name: 'SECURITE INFORMATIQUE', progress: 70, niveau: 'M1M' },
+                { name: 'GESTION DE PROJETS', progress: 85, niveau: 'M1M' },
+                { name: 'DEVELOPPEMENT MOBILE', progress: 60, niveau: 'M1M' },
+                { name: 'BIG DATA', progress: 45, niveau: 'M1M' },
+                { name: 'CLOUD COMPUTING', progress: 55, niveau: 'M1M' },
+
+                // Cours pour M1SI
+                { name: 'DEVELOPPEMENT MOBILE', progress: 80, niveau: 'M1SI' },
+                { name: 'SECURITE RESEAU', progress: 65, niveau: 'M1SI' },
+                { name: 'INTELLIGENCE ARTIFICIELLE', progress: 90, niveau: 'M1SI' },
+                { name: 'CYBERSECURITE', progress: 55, niveau: 'M1SI' },
+                { name: 'INFORMATIQUE QUANTIQUE', progress: 75, niveau: 'M1SI' },
+                { name: 'TECHNOLOGIES WEB', progress: 60, niveau: 'M1SI' },
+                { name: 'RESEAUX AVANCES', progress: 50, niveau: 'M1SI' },
+
+                // Cours pour B1SI
+                { name: 'GESTION DE PROJET', progress: 70, niveau: 'B1SI' },
+                { name: 'INTRODUCTION AUX BASES DE DONNEES', progress: 55, niveau: 'B1SI' },
+                { name: 'PROGRAMMATION', progress: 60, niveau: 'B1SI' },
+                { name: 'ALGORITHMIQUE', progress: 75, niveau: 'B1SI' },
+                { name: 'ARCHITECTURE DES ORDINATEURS', progress: 50, niveau: 'B1SI' },
+                { name: 'RESEAUX INFORMATIQUES', progress: 65, niveau: 'B1SI' },
+                { name: 'DEVELOPPEMENT LOGICIEL', progress: 85, niveau: 'B1SI' },
+
+                // Cours pour B2SI
+                { name: 'PROGRAMMATION', progress: 60, niveau: 'B2SI' },
+                { name: 'ALGORITHMIQUE', progress: 75, niveau: 'B2SI' },
+                { name: 'INTRODUCTION A L\'IA', progress: 50, niveau: 'B2SI' },
+                { name: 'RESEAUX INFORMATIQUES', progress: 65, niveau: 'B2SI' },
+                { name: 'SECURITE INFORMATIQUE', progress: 80, niveau: 'B2SI' },
+                { name: 'TECHNOLOGIES WEB', progress: 45, niveau: 'B2SI' },
+                { name: 'DEVELOPPEMENT LOGICIEL', progress: 85, niveau: 'B2SI' },
+
+                // Cours pour B2M
+                { name: 'PROGRAMMATION AVANCÉE', progress: 75, niveau: 'B2M' },
+                { name: 'BASES DE DONNÉES', progress: 60, niveau: 'B2M' },
+                { name: 'LOGICIELS DE GESTION', progress: 45, niveau: 'B2M' },
+                { name: 'MARKETING DIGITAL', progress: 80, niveau: 'B2M' },
+                { name: 'DÉVELOPPEMENT MOBILE', progress: 55, niveau: 'B2M' },
+                { name: 'SYSTÈMES D\'INFORMATION', progress: 90, niveau: 'B2M' },
+                { name: 'PROJETS INFORMATIQUES', progress: 70, niveau: 'B2M' },
+
+                // Cours pour B1M
+                { name: 'INTRODUCTION AUX BASES DE DONNÉES', progress: 50, niveau: 'B1M' },
+                { name: 'RÉSEAUX INFORMATIQUES', progress: 65, niveau: 'B1M' },
+                { name: 'SÉCURITÉ INFORMATIQUE', progress: 55, niveau: 'B1M' },
+                { name: 'DÉVELOPPEMENT WEB', progress: 75, niveau: 'B1M' },
+                { name: 'GESTION DE PROJETS', progress: 80, niveau: 'B1M' },
+                { name: 'APPLICATIONS MOBILES', progress: 45, niveau: 'B1M' },
+                { name: 'PROGRAMMATION ORIENTÉE OBJET', progress: 85, niveau: 'B1M' }
             ];
 
             const container = document.getElementById('courseProgressContainer');
-            courses.forEach(course => {
-                const courseElement = document.createElement('div');
-                courseElement.className = 'course';
-                courseElement.innerHTML = `
-                    <h2>${course.name}</h2>
-                    <div class="progress-bar">
-                        <div style="width: ${course.progress}%;">
-                            <span>${course.progress}%</span>
+            const niveauSelect = document.getElementById('niveau');
+
+            function displayCourses(courses) {
+                container.innerHTML = '';
+                courses.forEach(course => {
+                    const courseElement = document.createElement('div');
+                    courseElement.className = 'course';
+                    courseElement.innerHTML = `
+                        <h2>${course.name}</h2>
+                        <div class="progress-bar">
+                            <div style="width: ${course.progress}%;">
+                                <span>${course.progress}%</span>
+                            </div>
                         </div>
-                    </div>
-                `;
-                container.appendChild(courseElement);
-            });
+                    `;
+                    container.appendChild(courseElement);
+                });
+            }
+
+            function filterCourses() {
+                const selectedNiveau = niveauSelect.value;
+                if (selectedNiveau === 'all') {
+                    displayCourses(courses);
+                } else {
+                    const filteredCourses = courses.filter(course => course.niveau === selectedNiveau);
+                    displayCourses(filteredCourses);
+                }
+            }
+
+            niveauSelect.addEventListener('change', filterCourses);
+
+            // Afficher tous les cours au chargement initial
+            displayCourses(courses);
         });
     </script>
 </body>
