@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Progression du Cours</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .navbar {
+            background-color: #2A4975;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+        }
+        .navbar h1 {
+            margin: 0;
+        }
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 90%;
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius:8px;
+            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+        }
+        .course {
+            flex: 1 1 calc(33.333% - 20px); /* Each course takes up 1/3 of the container width */
+            margin: 10px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .course h2 {
+            color: #541A1C;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .progress-bar {
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 10px 0;
+            height: 30px;
+        }
+        .progress-bar div {
+            height: 100%;
+            background-color: #2A4975;
+            text-align: center;
+            color: white;
+            line-height: 30px;
+            border-radius: 8px 0 0 8px;
+            transition: width 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>Progression des Cours</h1>
+    </div>
+    <h1>Choix de niveau</h1>
+    <label for="niveau">Niveaux:</label>
+            <select id="niveau" name="niveau" class="form-control">
+                <option value="all">Tous les niveaux</option>
+                <option value="B3SI">B3SI</option>
+                <option value="B3M">B3M</option>
+                <option value="M1M">M1M</option>
+                <option value="M1SI">M1SI</option>
+                <option value="B1SI">B1SI</option>
+                <option value="B2SI">B2SI</option>
+                <!-- Ajoutez d'autres options pour vos catégories -->
+            </select>
+
+    <div class="content" id="courseProgressContainer">
+        <!-- Les cours et leur progression seront affichés ici -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Données statiques pour les cours
+            const courses = [
+                { name: 'RESEAU LOCAL', progress: 75 },
+                { name: 'UML', progress: 60 },
+                { name: 'SQL SERVER', progress: 45 },
+                { name: 'MERISE', progress: 90 },
+                { name: 'PROJET SI', progress: 50 },
+                { name: 'MS PROJECT', progress: 75 },
+                { name: 'VISUAL BASIC', progress: 60 },
+                { name: 'APPLICATION WEB & MOBILE', progress: 45 },
+                { name: 'RESEAUX TELECOMS', progress: 90 },
+                { name: 'BUSINESS PLAN', progress: 50 }
+                
+            ];
+
+            const container = document.getElementById('courseProgressContainer');
+            courses.forEach(course => {
+                const courseElement = document.createElement('div');
+                courseElement.className = 'course';
+                courseElement.innerHTML = `
+                    <h2>${course.name}</h2>
+                    <div class="progress-bar">
+                        <div style="width: ${course.progress}%;">
+                            <span>${course.progress}%</span>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(courseElement);
+            });
+        });
+    </script>
+</body>
+</html>
