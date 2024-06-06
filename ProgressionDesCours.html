@@ -6,13 +6,12 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-image: url('D.png'); /* Chemin de votre image de fond */
+            background-size: cover; /* Couvre tout l'écran */
+            background-position: center; /* Centre l'image */
+            background-attachment: fixed; /* Fixe l'image de fond */
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
         }
         .navbar {
             background-color: #2A4975;
@@ -32,7 +31,7 @@
             max-width: 1200px;
             margin: 20px auto;
             padding: 20px;
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.9); /* Fond semi-transparent pour la lisibilité */
             border-radius: 8px;
             box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
         }
