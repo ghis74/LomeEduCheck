@@ -1,0 +1,122 @@
+/* #################### header styling#################### */
+body{
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.7;
+}
+:root{
+    font-size: 80%;
+}
+ul li{
+    list-style: none;
+}
+a{
+    font-size: 1.6rem;
+    text-decoration: none;
+    border-bottom: 1px solid black;
+}
+p, li{
+    font-size: 1.6rem;  
+    margin-bottom: 0.5em;
+    letter-spacing: 0.07;
+}
+h1, h2, h3{
+    margin-bottom: 0.5em;
+    letter-spacing: 0.10em;
+    font-weight: 500;
+}
+header{
+    height: 97vh;
+    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)) , url('../IMG/main.jpg.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+.navbar{
+    padding: 0.5rem;
+}
+.navbar .logo{
+    letter-spacing: 0.2em;
+    float: left;
+}
+.navbar .nav-items{
+    float: middle;
+    margin-top: 1rem;
+}
+.navbar::after{
+    content: "";
+    clear: both;
+    display: block;
+}
+.navbar .container {
+    margin-left: 500px; /* Ajustez la valeur en fonction de vos besoins */
+  }
+/* ################### header content styling ################ */
+.navbar .nav-item{
+    display: inline-block;
+    padding: 1rem;
+}
+.navbar a:link,
+.navbar a:visited{
+    color:rgb(15, 5, 5);
+}
+.navbar a{
+    padding-bottom: 0.3rem;
+    margin: 0 auto;
+}
+.navbar a:hover{
+    border-bottom: 1px solid white;
+}
+.header-content{
+    text-align: center;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    
+}
+.header-content h1{
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+    margin:auto 0%;
+}
+.header-content p{
+    text-transform: uppercase;
+    text-align: center;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background: #ebebeb;
+  }
+  
+  .header-content {
+    text-align: center;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    background: #ebebeb;
+  }
+  
+  .header-content {
+    text-align: center;
+  }
+  .btn{
+    display: inline-block;
+    padding: 0.5em 1.5em;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin: 0.5em 0;
+}
+  
+  .btn-primary{
+    background-color: rgb(105, 106, 145);
+    border-radius: 10em;
+    letter-spacing: 0.15em;
+}
+.btn-primary:hover{
+    background: #ddd;
+}
