@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
-<!-- =============== création da la page des professeurs ================ -->
+<!-- =============== création de la page des professeurs ================ -->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +23,6 @@
                         <span class="title"></span>
                     </a>
                 </li>
-
                 <li>
                     <a href="../src/index.html">
                         <span class="icon">
@@ -31,7 +31,6 @@
                         <span class="title">Dashboard</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="../src/utilisateurs.html">
                         <span class="icon">
@@ -40,7 +39,6 @@
                         <span class="title">Professeur</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="#">
                         <span class="icon">
@@ -49,7 +47,6 @@
                         <span class="title">Messages</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="#">
                         <span class="icon">
@@ -58,8 +55,6 @@
                         <span class="title">Emargement</span>
                     </a>
                 </li>
-
-
                 <li>
                     <a href="#">
                         <span class="icon">
@@ -68,7 +63,6 @@
                         <span class="title">Historique</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="#">
                         <span class="icon">
@@ -77,7 +71,6 @@
                         <span class="title">Paramètres</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="#">
                         <span class="icon">
@@ -86,7 +79,6 @@
                         <span class="title">Mot de passe</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="#">
                         <span class="icon">
@@ -104,14 +96,12 @@
                 <div class="toggle">
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
-
                 <div class="search">
                     <label>
                         <input type="text" placeholder="Recherche">
                         <ion-icon name="search-outline"></ion-icon>
                     </label>
                 </div>
-
                 <div class="user">
                     <img src="/assets/media/customer 3.png" alt="">
                 </div>
@@ -121,57 +111,14 @@
                 <div class="cardHeader">
                     <h2>Liste des professeurs</h2>
                 </div>
-                <table class="centered-table profs-table">
-                    <tr>
-                        <td>
-                            <h4>Mr David <br></h4>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h4>Mr tokal <br></h4>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h4>Mr Bob David <br></h4>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h4>Amit <br></h4>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h4>David <br></h4>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h4>M. MOUMOUNI <br></h4>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h4>M. OHOUGBEGNON <br></h4>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h4>M. DJOMATINE <br></h4>
-                        </td>
-                    </tr>
+                <table class="centered-table profs-table" id="profsTable">
+                    <!-- Les professeurs seront insérés ici par JavaScript -->
                 </table>
             </div>
-
-            <!-- ======================= Cards ================== -->
-            
 
             <section class="section">
                 <div class="container">
                     <h1 class="title">Gestion des Utilisateurs</h1>
-
                     <table>
                         <tr>
                             <td>
@@ -244,10 +191,6 @@
                                     </div>
                                     <form id="putForm">
                                         <div class="field">
-                                            <label class="label">ID d'Utilisateur</label>
-                                            <input class="input" type="number" id="putId" required>
-                                        </div>
-                                        <div class="field">
                                             <label class="label">Nom</label>
                                             <input class="input" type="text" id="putNom" required>
                                         </div>
@@ -300,7 +243,6 @@
                                     <pre id="deleteResult"></pre>
                                 </div>
                             </td>
-                            
                         </tr>
                     </table>
                 </div>
@@ -309,6 +251,110 @@
     </div>
 
     <script src="../assets/scripts/main.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const API_URL = "path/to/your/api.php";  // Remplacez ceci par le chemin correct vers votre API
+
+            // Récupérer tous les utilisateurs et les afficher
+            const fetchUsers = () => {
+                fetch(API_URL, { method: 'GET' })
+                    .then(response => response.json())
+                    .then(users => {
+                        const profsTable = document.getElementById('profsTable');
+                        profsTable.innerHTML = '';  // Clear existing rows
+                        users.forEach(user => {
+                            let row = `<tr><td><h4>${user.nom} ${user.prenoms} <br></h4></td></tr>`;
+                            profsTable.innerHTML += row;
+                        });
+                    })
+                    .catch(error => console.error('Error fetching users:', error));
+            };
+
+            // Gestion de la récupération d'un utilisateur par ID
+            document.getElementById('getForm').addEventListener('submit', event => {
+                event.preventDefault();
+                const id = document.getElementById('getId').value;
+                fetch(`${API_URL}?id=${id}`, { method: 'GET' })
+                    .then(response => response.json())
+                    .then(user => {
+                        document.getElementById('getResult').innerText = JSON.stringify(user, null, 2);
+                    })
+                    .catch(error => console.error('Error fetching user:', error));
+            });
+
+            // Gestion de la création d'un utilisateur
+            document.getElementById('postForm').addEventListener('submit', event => {
+                event.preventDefault();
+                const data = {
+                    nom: document.getElementById('postNom').value,
+                    prenoms: document.getElementById('postPrenoms').value,
+                    telephone: document.getElementById('postTelephone').value,
+                    email: document.getElementById('postEmail').value,
+                    adresse: document.getElementById('postAdresse').value,
+                    motpass: document.getElementById('postMotpass').value,
+                    Id_roles: document.getElementById('postIdRoles').value,
+                    Id_confirmations: document.getElementById('postIdConfirmations').value,
+                };
+                fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                    .then(response => response.json())
+                    .then(result => {
+                        document.getElementById('postResult').innerText = JSON.stringify(result, null, 2);
+                        fetchUsers();  // Refresh the list of users
+                    })
+                    .catch(error => console.error('Error creating user:', error));
+            });
+
+            // Gestion de la mise à jour d'un utilisateur
+            document.getElementById('putForm').addEventListener('submit', event => {
+                event.preventDefault();
+                const data = {
+                    nom: document.getElementById('putNom').value,
+                    prenoms: document.getElementById('putPrenoms').value,
+                    telephone: document.getElementById('putTelephone').value,
+                    email: document.getElementById('putEmail').value,
+                    adresse: document.getElementById('putAdresse').value,
+                    motpass: document.getElementById('putMotpass').value,
+                    Id_roles: document.getElementById('putIdRoles').value,
+                    Id_confirmations: document.getElementById('putIdConfirmations').value,
+                };
+                fetch(API_URL, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                    .then(response => response.json())
+                    .then(result => {
+                        document.getElementById('putResult').innerText = JSON.stringify(result, null, 2);
+                        fetchUsers();  // Refresh the list of users
+                    })
+                    .catch(error => console.error('Error updating user:', error));
+            });
+
+            // Gestion de la suppression d'un utilisateur
+            document.getElementById('deleteForm').addEventListener('submit', event => {
+                event.preventDefault();
+                const id = document.getElementById('deleteId').value;
+                fetch(`${API_URL}?id=${id}`, { method: 'DELETE' })
+                    .then(response => response.json())
+                    .then(result => {
+                        document.getElementById('deleteResult').innerText = JSON.stringify(result, null, 2);
+                        fetchUsers();  // Refresh the list of users
+                    })
+                    .catch(error => console.error('Error deleting user:', error));
+            });
+
+            // Initial fetch of users to display
+            fetchUsers();
+        });
+    </script>
 </body>
 
 </html>
